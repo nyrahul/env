@@ -7,19 +7,19 @@
 
 ## Vimrc
 Add following line to default vimrc:
-
 ```so ~/env/vimrc```
+Added by `setup.sh`.
 
 ## Bashrc
 Add following line to default bashrc:
-
 ```[ -f ~/env/bashrc ] && source ~/env/bashrc```
+Added by `setup.sh`.
 
 ## Gitconfig
 Add following line to default .gitconfig:
-
 ```
 [include]
 	path = ~/env/.gitconfig
 ```
+Not added by `setup.sh`.
 
