@@ -1,0 +1,11 @@
+[user]
+    name = Rahul Jadhav
+    email = nyrahul@gmail.com
+[merge]
+    tool = vimdiff
+[credential]
+    helper = cache --timeout=360000
+[push]
+    default = simple
+[core]
+    editor = vim

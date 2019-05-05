@@ -1,0 +1,14 @@
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
+
+vbell off
+#mousetrack on
+shell "/bin/bash"
+shell -bash
+escape ^xx
+
+# Do not let VIM screen behind on quiting to console
+altscreen on
+
+# Command wrap issue with screen
+termcapinfo xterm* ti@:te@
