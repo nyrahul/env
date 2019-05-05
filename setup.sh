@@ -6,9 +6,10 @@ install_ripgrep()
 {
     hash rg 2>/dev/null
     [[ $? -eq 0 ]] && echo "ripgrep already installed" && return
-    curl -kLO https://github.com/BurntSushi/ripgrep/releases/download/11.0.1/ripgrep_11.0.1_amd64.deb
-    sudo dpkg -i ripgrep_11.0.1_amd64.deb
-    rm ripgrep_11.0.1_amd64.deb
+    f=ripgrep_11.0.1_amd64.deb
+    curl -kLO https://github.com/BurntSushi/ripgrep/releases/download/11.0.1/$f
+    sudo dpkg -i $f
+    rm $f
 }
 
 install()
@@ -21,6 +22,7 @@ install()
 install git
 install tree
 install cscope
+install doxygen
 install ctags exuberant-ctags
 install ag silversearcher-ag
 install_ripgrep
