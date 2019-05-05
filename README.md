@@ -8,18 +8,18 @@
 ## Vimrc
 Add following line to default vimrc:
 
-`so ~/env/vimrc`
+```so ~/env/vimrc```
 
 ## Bashrc
 Add following line to default bashrc:
 
-`[ -f ~/env/bashrc ] && source ~/env/bashrc`
+```[ -f ~/env/bashrc ] && source ~/env/bashrc```
 
 ## Gitconfig
 Add following line to default .gitconfig:
 
-`
-[include]  
+```
+[include]
 	path = ~/env/.gitconfig
-`
+```
 
