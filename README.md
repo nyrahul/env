@@ -19,7 +19,7 @@ Add following line to default bashrc:
 Add following line to default .gitconfig:
 
 `
-[include]
+[include]  
 	path = ~/env/.gitconfig
 `
 
