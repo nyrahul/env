@@ -9,12 +9,14 @@
 Add following line to default vimrc:
 
 ```so ~/env/vimrc```
+
 Added by `setup.sh`.
 
 ## Bashrc
 Add following line to default bashrc:
 
 ```[ -f ~/env/bashrc ] && source ~/env/bashrc```
+
 Added by `setup.sh`.
 
 ## Gitconfig
