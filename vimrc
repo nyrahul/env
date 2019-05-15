@@ -90,6 +90,7 @@ set rtp+=~/.fzf
 " Ctrl-o to open file using fzf
 map <C-o> :Files<CR>
 map <F7> :Tags<CR>
+map <C-_> :Rg <C-R><C-W><CR>
 
 " Use fzf with ag to ignore files from .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
