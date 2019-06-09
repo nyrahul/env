@@ -131,3 +131,10 @@ set laststatus=2
 
 map <F4> :TlistToggle<CR>
 set pastetoggle=<F3>
+
+let g:fzf_tags_command='ctags --links=no -R'
+
+execute pathogen#infect()
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
