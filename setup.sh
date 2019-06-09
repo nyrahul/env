@@ -30,6 +30,8 @@ if [ ! -f $PLUGVIM ]; then
     vim -c ":PlugInstall" -c ":qa"
 fi
 
+./ycm_install.sh
+
 echo "Installing packages. Need root permissions."
 sudo ./setup_pkgs.sh
 
