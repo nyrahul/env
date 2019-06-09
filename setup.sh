@@ -1,13 +1,15 @@
 #!/bin/bash
 
+mkdir -p ~/.vim/autoload 2>/dev/null
+
 grep "^so.*env.*vimrc" ~/.vimrc >/dev/null
 [[ $? -ne 0 ]] && echo "so ~/env/vimrc" >> ~/.vimrc
 
 grep ".*~/env/bashrc.*source ~/env/bashrc" ~/.bashrc >/dev/null
 [[ $? -ne 0 ]] && echo "[ -f ~/env/bashrc ] && source ~/env/bashrc" >> ~/.bashrc
 
-if [ ! -f ~/.vim/autoload/plug.vim ]; then
-    PLUGVIM="~/.vim/autoload/plug.vim"
+PLUGVIM=~/.vim/autoload/plug.vim
+if [ ! -f $PLUGVIM ]; then
     curl -kfLo $PLUGVIM --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     [[ ! -f "$PLUGVIM" ]] && echo "Could not download plug.vim!" && exit 2
