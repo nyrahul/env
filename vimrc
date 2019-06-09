@@ -90,6 +90,7 @@ set rtp+=~/.fzf
 " Ctrl-o to open file using fzf
 map <C-o> :Files<CR>
 map <F7> :Tags<CR>
+map <C-_> :Rg <C-R><C-W><CR>
 
 " Use fzf with ag to ignore files from .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
@@ -110,10 +111,16 @@ hi StatusLineNC guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 
 " Configure F8 to use ripgrep
 command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \       'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 0,
-        \       {'options': '--no-hscroll --delimiter : --nth 4..'},
-        \       <bang>0)
+  \ call fzf#vim#grep('rg --column --no-heading --line-number --color=always '.shellescape(<q-args>),
+  \ 1,
+  \ fzf#vim#with_preview(),
+  \ <bang>0)
+
+" command! -bang -nargs=* Rg
+"        \ call fzf#vim#grep(
+"        \       'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 0,
+"        \       {'options': '--no-hscroll --delimiter : --nth 4..'},
+"        \       <bang>0)
 map <F8> :Rg<CR>
 
 " Display statusline with current file name in it
