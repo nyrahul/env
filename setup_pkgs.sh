@@ -27,4 +27,3 @@ install ctags exuberant-ctags
 install ag silversearcher-ag
 install_ripgrep
 
-
