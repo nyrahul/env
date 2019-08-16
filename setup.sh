@@ -8,6 +8,10 @@ grep "^so.*env.*vimrc" ~/.vimrc >/dev/null
 grep ".*~/env/bashrc.*source ~/env/bashrc" ~/.bashrc >/dev/null
 [[ $? -ne 0 ]] && echo "[ -f ~/env/bashrc ] && source ~/env/bashrc" >> ~/.bashrc
 
+touch ~/.tmux.conf
+grep "source-file.*~/env/tmux.conf" ~/.tmux.conf >/dev/null
+[[ $? -ne 0 ]] && echo "source-file ~/env/tmux.conf" >> ~/.tmux.conf
+
 PATHOGEN=~/.vim/autoload/pathogen.vim
 if [ ! -f $PATHOGEN ]; then
     curl -kLo $PATHOGEN https://tpo.pe/pathogen.vim

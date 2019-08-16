@@ -23,6 +23,7 @@ install git
 install tree
 install cscope
 install doxygen
+install highlight
 install ctags exuberant-ctags
 install ag silversearcher-ag
 install_ripgrep

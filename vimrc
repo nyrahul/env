@@ -45,7 +45,7 @@ autocmd BufWinLeave * call clearmatches()
 map <F5> :!ctags -R .<CR>:!cscope -Rb<CR>:cs reset<CR><CR>
 
 " build using makeprg with <F7>
-map <F9> :make! -s<CR>
+map <F9> :make! PLATFORM=linux -s<CR>
 
 " highlight matching braces
 set showmatch
@@ -100,6 +100,11 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'itchyny/vim-gitbranch'
+Plug 'airblade/vim-gitgutter'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 command! -bang -nargs=? -complete=dir Files
@@ -138,3 +143,24 @@ execute pathogen#infect()
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_confirm_extra_conf = 0
+
+set completeopt-=preview
+
+if !has('gui_running')
+    set t_Co=256
+endif
+set noshowmode
+let g:lightline = {
+            \ 'colorscheme': 'PaperColor',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'gitbranch#name'
+            \ },
+            \ }
