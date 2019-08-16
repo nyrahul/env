@@ -24,6 +24,8 @@ install tree
 install cscope
 install doxygen
 install highlight
+install tmux
+install cloc
 install ctags exuberant-ctags
 install ag silversearcher-ag
 install_ripgrep
