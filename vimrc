@@ -150,6 +150,19 @@ let g:ycm_confirm_extra_conf = 0
 
 set completeopt-=preview
 
+" Project specific vim settings
+set exrc
+set secure
+
+" Enable spell-check for certain filetypes and set the dictionary file
+augroup ignoreSpell
+    autocmd!
+    autocmd FileType markdown setlocal spell
+    autocmd BufRead,BufNewFile *.md setlocal spell
+    autocmd BufRead,BufNewFile *.txt setlocal spell
+augroup END
+set spellfile=~/env/spell/en.utf-8.add
+
 if !has('gui_running')
     set t_Co=256
 endif

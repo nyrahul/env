@@ -12,3 +12,6 @@ export LC_ALL="en_US.UTF-8"
 
 # WARNING: This may not be the suitable bet for everyone!
 [[ $TERM != "screen" ]] && exec tmux
+
+# Mutt needs this
+export EDITOR=vim
