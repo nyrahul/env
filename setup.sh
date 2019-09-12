@@ -1,6 +1,15 @@
 #!/bin/bash
 
-sudo apt -y install curl vim exuberant-ctags
+install()
+{
+    hash $1 2>/dev/null
+    [[ $? -eq 0 ]] && echo "${2-$1} already installed" && return
+    sudo apt -y install ${2-$1}
+}
+
+install curl
+install ctags exuberant-ctags
+install vim
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle 2>/dev/null
 
