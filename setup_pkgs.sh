@@ -16,7 +16,7 @@ install()
 {
     hash $1 2>/dev/null
     [[ $? -eq 0 ]] && echo "${2-$1} already installed" && return
-    apt install ${2-$1}
+    apt -y install ${2-$1}
 }
 
 install git

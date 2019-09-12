@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt -y install curl vim exuberant-ctags
+
 mkdir -p ~/.vim/autoload ~/.vim/bundle 2>/dev/null
 
 grep "^so.*env.*vimrc" ~/.vimrc >/dev/null
@@ -38,5 +40,7 @@ fi
 
 echo "Installing packages. Need root permissions."
 sudo ./setup_pkgs.sh
+
+[[ ! -f ~/.gitconfig ]] && cp ~/env/.gitconfig ~/.
 
 echo "NOTE: Logout and login the terminal again to take effect."
