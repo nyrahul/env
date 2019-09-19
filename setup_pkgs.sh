@@ -26,6 +26,7 @@ install doxygen
 install highlight
 install tmux
 install cloc
+install ifconfig net-tools
 install ctags exuberant-ctags
 install ag silversearcher-ag
 install_ripgrep
