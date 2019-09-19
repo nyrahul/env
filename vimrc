@@ -147,6 +147,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '~/env/ycm_extra_conf.py'
 
 set completeopt-=preview
 
