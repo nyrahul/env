@@ -1,9 +1,10 @@
 # My Linux env setup
 
 1. Sets up my vim env (default vimrc and vim plugins)
-2. Installs required linux pkgs
+2. Installs required linux packages
 3. Sets up my bashrc
-3. Sets up my gitconfig
+4. Sets up my gitconfig
+5. Script to set default TCP Congestion control algorithm to BBR (not enabled by default)
 
 ## Vimrc
 Add following line to default vimrc:
