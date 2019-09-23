@@ -4,7 +4,6 @@ set hlsearch incsearch
 set sw=4 ts=4
 set si ai autoread
 set expandtab smarttab
-colorscheme elflord
 map <F12> :Dox<CR>
 set splitbelow  " vertical split, open new split below (def up)
 set splitright  " horizontal split, open new split on the right (def left)
@@ -178,3 +177,5 @@ let g:lightline = {
             \   'gitbranch': 'gitbranch#name'
             \ },
             \ }
+
+colorscheme elflord
