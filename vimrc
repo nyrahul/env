@@ -157,9 +157,9 @@ set secure
 " Enable spell-check for certain filetypes and set the dictionary file
 augroup ignoreSpell
     autocmd!
-    autocmd FileType markdown setlocal spell
-    autocmd BufRead,BufNewFile *.md setlocal spell
-    autocmd BufRead,BufNewFile *.txt setlocal spell
+"    autocmd FileType markdown setlocal spell
+"    autocmd BufRead,BufNewFile *.md setlocal spell
+"    autocmd BufRead,BufNewFile *.txt setlocal spell
 augroup END
 set spellfile=~/env/spell/en.utf-8.add
 
