@@ -15,4 +15,6 @@ export LC_ALL="en_US.UTF-8"
 
 # Mutt needs this
 export EDITOR=vim
-export PATH=$PATH:~/env/rtscripts
+export PATH=/usr/lib/ccache:$PATH:~/env/rtscripts
+alias xdg-open="xdg-open 2>&1 >/dev/null"
+

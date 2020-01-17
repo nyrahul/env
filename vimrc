@@ -87,7 +87,7 @@ au BufRead,BufNewFile *.log             setfiletype log
 set rtp+=~/.fzf
 
 " Ctrl-o to open file using fzf
-map <C-o> :Files<CR>
+map <C-k> :Files<CR>
 map <F7> :Tags<CR>
 map <C-_> :Rg <C-R><C-W><CR>
 
@@ -115,7 +115,7 @@ hi StatusLineNC guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 
 " Configure F8 to use ripgrep
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep('rg --column --no-heading --line-number --color=always '.shellescape(<q-args>),
+  \ call fzf#vim#grep('rg --column --no-heading --line-number --color=always --iglob !tags '.shellescape(<q-args>),
   \ 1,
   \ fzf#vim#with_preview(),
   \ <bang>0)
