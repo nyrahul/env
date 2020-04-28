@@ -1,8 +1,9 @@
 #!/bin/bash
 
 [[ ! $(which vlc) ]] && echo "need vlc" && exit 1
-[[ ! -f "$1" ]] && echo "Need input play file" && exit 1
-fyle=`realpath "$1"`
+if [ -f "$1" ]; then
+    fyle=`realpath "$1"`
+fi
 
 get_vlc_addr()
 {
@@ -10,7 +11,16 @@ get_vlc_addr()
     vlcaddr="${addr/:/ }"
 }
 
-killall vlc 2>/dev/null && sleep 0.1
-vlc --intf dummy  -I rc --rc-host 0.0.0.0:0 2>/dev/null && sleep 0.1
+if [ "$fyle" != "" ]; then
+    killall vlc 2>/dev/null && sleep 0.1
+    vlc --intf dummy  -I rc --rc-host 0.0.0.0:0 2>/dev/null && sleep 0.1
+fi
 get_vlc_addr
-echo "add $fyle" | nc -w 0 $vlcaddr
+if [ "$fyle" != "" ]; then
+    echo "add $fyle" | nc -w 0 $vlcaddr
+else
+    [[ "$vlcaddr" == "" ]] && vlc --intf dummy  -I rc --rc-host 0.0.0.0:0 2>/dev/null
+    sleep 0.1
+    get_vlc_addr
+    echo "$1" | nc -w 1 $vlcaddr
+fi

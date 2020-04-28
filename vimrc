@@ -113,7 +113,7 @@ command! -bang -nargs=? -complete=dir Files
 hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
 hi StatusLineNC guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 
-" Configure F8 to use ripgrep
+" Configure F6 to use ripgrep
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep('rg --column --no-heading --line-number --color=always --iglob !tags '.shellescape(<q-args>),
   \ 1,
@@ -125,7 +125,7 @@ command! -bang -nargs=* Rg
 "        \       'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 0,
 "        \       {'options': '--no-hscroll --delimiter : --nth 4..'},
 "        \       <bang>0)
-map <F8> :Rg<CR>
+map <F6> :Rg<CR>
 
 " Display statusline with current file name in it
 set statusline+=%f
