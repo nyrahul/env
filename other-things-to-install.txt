@@ -1,0 +1,13 @@
+* System monitor gnome-shell-extn: https://extensions.gnome.org/extension/120/system-monitor/
+* Timezones: https://extensions.gnome.org/extension/2657/timezones-extension/
+
+* WPS Office
+
+* VScode
+
+* PDFStudioViewer
+
+* skype
+* zoom
+* slack
+* virtualbox
