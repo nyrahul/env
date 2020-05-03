@@ -7,9 +7,29 @@ install()
     sudo apt -y install ${2-$1}
 }
 
+install_ripgrep()
+{
+    hash rg 2>/dev/null
+    [[ $? -eq 0 ]] && echo "ripgrep already installed" && return
+    f=ripgrep_11.0.1_amd64.deb
+    curl -kLO https://github.com/BurntSushi/ripgrep/releases/download/11.0.1/$f
+    sudo dpkg -i $f
+    rm $f
+}
+
 install curl
 install ctags exuberant-ctags
 install vim
+install cscope
+install doxygen
+install highlight
+install tmux
+install tree
+install cloc
+install_ripgrep
+install ifconfig net-tools
+install ctags exuberant-ctags
+install ag silversearcher-ag
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle 2>/dev/null
 
@@ -47,8 +67,10 @@ fi
 
 ./ycm_install.sh
 
-echo "Installing packages. Need root permissions."
-sudo ./setup_pkgs.sh
+if [ "$1" != "" ]; then
+    echo "Installing packages. Need root permissions."
+    sudo ./setup_pkgs.sh
+fi
 
 [[ ! -f ~/.gitconfig ]] && cp ~/env/.gitconfig ~/.
 
