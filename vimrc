@@ -43,8 +43,7 @@ autocmd BufWinLeave * call clearmatches()
 " recreate tags file with F5
 map <F5> :!ctags -R .<CR>:!cscope -Rb<CR>:cs reset<CR><CR>
 
-" build using makeprg with <F7>
-map <F9> :make! PLATFORM=linux -s<CR>
+map <C-x> :make!<CR>
 
 " highlight matching braces
 set showmatch
