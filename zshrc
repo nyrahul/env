@@ -1,6 +1,6 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -16,8 +16,6 @@ export ZSH="/home/rahul/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="agnoster"
-#ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -54,7 +52,7 @@ CASE_SENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -71,6 +69,7 @@ CASE_SENSITIVE="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+export FZF_BASE=~/.fzf
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -85,6 +84,7 @@ plugins=(
     colorize
     command-not-found
     mosh
+    fzf
     zsh-syntax-highlighting
     zsh-autosuggestions
     )
@@ -116,11 +116,23 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cat="ccat"
-alias less="cless"
 ZSH_COLORIZE_STYLE="colorful"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(expand-or-complete)
+
+alias grep='grep --color=always'
+alias ls='ls --color=always'
+export JAVA_HOME=/home/rahul/Softwares/android-studio/jre
+export PATH="$PATH:/home/rahul/Android/Sdk/tools/bin:/home/rahul/rnd/micropython/ports/unix:/home/rahul/Softwares/go/bin"
+export GOPATH=/home/rahul/Softwares/gopath
+export GOROOT=/home/rahul/Softwares/go
+export PATH="${PATH}:${HOME}/.krew/bin"
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+WORDCHARS='\/*?_-.[]~=&;!#$%^(){}<>'
+[ -f ~/env/bashrc ] && source ~/env/bashrc
+unsetopt share_history
