@@ -41,7 +41,7 @@ autocmd BufWinLeave * call clearmatches()
 " highlight ColorColumn ctermbg=7
 
 " recreate tags file with F5
-map <F5> :!ctags -R .<CR>:!cscope -Rb<CR>:cs reset<CR><CR>
+map <F5> :!ctags --exclude=bin --exclude=.git -R .<CR>:!cscope -Rb<CR>:cs reset<CR><CR>
 
 map <C-x> :make!<CR>
 
@@ -135,7 +135,7 @@ set laststatus=2
 map <F4> :TlistToggle<CR>
 set pastetoggle=<F3>
 
-let g:fzf_tags_command='ctags --links=no -R'
+let g:fzf_tags_command='ctags ---exclude=bin --exclude=.git -links=no -R'
 
 execute pathogen#infect()
 
