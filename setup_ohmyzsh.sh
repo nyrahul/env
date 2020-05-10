@@ -1,18 +1,21 @@
 #!/bin/bash
 
-[[ $EUID -ne 0 ]] && echo "Need to run as root!" && exit 1
+[[ $UID -eq 0 ]] && echo "do not run it with root" && exit
 
 install()
 {
     hash $1 2>/dev/null
     [[ $? -eq 0 ]] && echo "${2-$1} already installed" && return
-    apt -y install ${2-$1}
+    sudo apt -y install ${2-$1}
 }
 
 install zsh
 install curl
 if [ ! -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+if [ "$ZSH_CUSTOM" == "" ]; then
+    ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 fi
 if [ "$ZSH_CUSTOM" != "" ]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
