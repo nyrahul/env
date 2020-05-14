@@ -130,7 +130,7 @@ alias ls='ls --color=always'
 export GOPATH=$HOME/Softwares/gopath
 export GOROOT=$HOME/Softwares/go
 export PATH=${PATH}:$GOROOT/bin
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+if [ -f /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 WORDCHARS='\/*?_-.[]~=&;!#$%^(){}<>'
 [ -f ~/env/bashrc ] && source ~/env/bashrc
 unsetopt share_history
