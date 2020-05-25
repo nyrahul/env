@@ -41,7 +41,7 @@ autocmd BufWinLeave * call clearmatches()
 " highlight ColorColumn ctermbg=7
 
 " recreate tags file with F5
-map <F5> :!ctags --exclude=bin --exclude=.git -R .<CR>:!cscope -Rb<CR>:cs reset<CR><CR>
+map <F5> :!ctags --exclude=.git -R .<CR>:!cscope -Rb<CR>:cs reset<CR><CR>
 
 map <C-x> :make!<CR>
 
@@ -97,10 +97,9 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'kyuhi/vim-emoji-complete'
 Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
@@ -113,7 +112,7 @@ hi StatusLineNC guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 
 " Configure F6 to use ripgrep
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep('rg --column --no-heading --line-number --color=always --iglob !tags '.shellescape(<q-args>),
+  \ call fzf#vim#grep('rg -w --column --no-heading --line-number --color=always --iglob !cscope.out --iglob !tags '.shellescape(<q-args>),
   \ 1,
   \ fzf#vim#with_preview(),
   \ <bang>0)
@@ -134,7 +133,7 @@ set laststatus=2
 map <F4> :TlistToggle<CR>
 set pastetoggle=<F3>
 
-let g:fzf_tags_command='ctags ---exclude=bin --exclude=.git -links=no -R'
+let g:fzf_tags_command='ctags --exclude=.git -links=no -R'
 
 execute pathogen#infect()
 
@@ -155,8 +154,6 @@ set secure
 " Enable spell-check for certain filetypes and set the dictionary file
 augroup ignoreSpell
     autocmd!
-"    autocmd FileType markdown setlocal spell
-"    autocmd BufRead,BufNewFile *.md setlocal spell
 "    autocmd BufRead,BufNewFile *.txt setlocal spell
 augroup END
 set spellfile=~/env/spell/en.utf-8.add
