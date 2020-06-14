@@ -43,7 +43,8 @@ autocmd BufWinLeave * call clearmatches()
 " recreate tags file with F5
 map <F5> :!ctags --exclude=.git -R .<CR>:!cscope -Rb<CR>:cs reset<CR><CR>
 
-map <C-x> :make!<CR>
+map <F9> :make!<CR>
+map <C-F9> :make! clean all<CR>
 
 " highlight matching braces
 set showmatch
@@ -77,7 +78,7 @@ endif
 " jump to a function declaration
 nmap <silent> <C-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
 " show a list of where function is called
-nmap <silent> <C-_> :cs find c <C-R>=expand("<cword>")<CR><CR>
+" nmap <silent> <C-_> :cs find c <C-R>=expand("<cword>")<CR><CR>
 
 " Set filetype for log files
 au BufRead,BufNewFile *.log             setfiletype log
@@ -88,6 +89,7 @@ set rtp+=~/.fzf
 " Ctrl-o to open file using fzf
 map <C-k> :Files<CR>
 map <F7> :Tags<CR>
+" The following also maps <C-/>
 map <C-_> :Rg <C-R><C-W><CR>
 
 " Use fzf with ag to ignore files from .gitignore
