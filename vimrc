@@ -78,7 +78,7 @@ endif
 " jump to a function declaration
 nmap <silent> <C-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
 " show a list of where function is called
-" nmap <silent> <C-_> :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <C-_> :cs find c <C-R>=expand("<cword>")<CR><CR>
 
 " Set filetype for log files
 au BufRead,BufNewFile *.log             setfiletype log
@@ -89,6 +89,7 @@ set rtp+=~/.fzf
 " Ctrl-o to open file using fzf
 map <C-k> :Files<CR>
 map <F7> :Tags<CR>
+map <C-_> :Rg <C-R><C-W><CR>
 
 " Use fzf with ag to ignore files from .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
