@@ -23,6 +23,7 @@ install vim
 install cscope
 install doxygen
 install highlight
+install fonts-powerline
 install tmux
 install tree
 install cloc
