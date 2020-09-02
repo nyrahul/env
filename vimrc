@@ -3,7 +3,8 @@ set rtp^=~/env/vimplugin
 set hlsearch incsearch
 set sw=4 ts=4
 set si ai autoread
-set expandtab smarttab
+set smarttab
+" set expandtab " go code does not like expandtab
 map <F12> :Dox<CR>
 set splitbelow  " vertical split, open new split below (def up)
 set splitright  " horizontal split, open new split on the right (def left)

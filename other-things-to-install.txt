@@ -1,5 +1,6 @@
 * System monitor gnome-shell-extn: https://extensions.gnome.org/extension/120/system-monitor/
 * Timezones: https://extensions.gnome.org/extension/2657/timezones-extension/
+* Dash to Panel: https://extensions.gnome.org/extension/1160/dash-to-panel/
 
 * WPS Office
 
