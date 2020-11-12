@@ -15,6 +15,7 @@ install gimp
 install vlc
 install flameshot
 install mypaint
+install gnome-clocks
 
 # Needed for gromit-mpx
 install libindicator3-dev
