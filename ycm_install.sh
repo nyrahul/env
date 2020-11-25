@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install build-essential cmake python3-dev bear
+sudo apt -y install build-essential cmake python3-dev bear
 [[ $? -ne 0 ]] && echo "cudnot install YCM deps" && exit 2
 
 YCMPATH=~/.vim/bundle/YouCompleteMe

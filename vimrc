@@ -1,7 +1,7 @@
 set rtp^=~/env/vimplugin
 
 set hlsearch incsearch
-set sw=4 ts=4
+set sw=4 ts=4 nu
 set si ai autoread
 set smarttab
 " set expandtab " go code does not like expandtab
