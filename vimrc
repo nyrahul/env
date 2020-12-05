@@ -90,7 +90,14 @@ set rtp+=~/.fzf
 " Ctrl-o to open file using fzf
 map <C-k> :Files<CR>
 map <F7> :Tags<CR>
+
+" KEY: Ctrl-/ to riggrep including _test.go files
 map <C-_> :Rg <C-R><C-W><CR>
+
+" KEY: Alt-/ or Ctrl-Alt-/ to riggrep without searching in _test.go files
+execute "set <M-/>=\e/"
+nnoremap <M-/> /
+map <M-/> :RgSkipGlobs <C-R><C-W><CR>
 
 " Use fzf with ag to ignore files from .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
@@ -104,6 +111,7 @@ Plug 'kyuhi/vim-emoji-complete'
 Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 command! -bang -nargs=? -complete=dir Files
@@ -116,6 +124,12 @@ hi StatusLineNC guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 " Configure F6 to use ripgrep
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep('rg -w --column --no-heading --line-number --color=always --iglob !cscope.out --iglob !tags '.shellescape(<q-args>),
+  \ 1,
+  \ fzf#vim#with_preview(),
+  \ <bang>0)
+
+command! -bang -nargs=* RgSkipGlobs
+  \ call fzf#vim#grep('rg -w --column --no-heading --line-number --color=always --iglob !cscope.out --iglob !tags --iglob "!*_test.go" '.shellescape(<q-args>),
   \ 1,
   \ fzf#vim#with_preview(),
   \ <bang>0)

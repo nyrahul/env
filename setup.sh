@@ -32,11 +32,13 @@ install ifconfig net-tools
 install ctags exuberant-ctags
 install ag silversearcher-ag
 
-vundle_install()
+bundle_install()
 {
-	[[ -d $1 ]] && return
-	git clone $2 $1
-	[[ $? -ne 0 ]] && echo "cudnot install $1!" && rm -rf $1 && exit 2
+	repo=`basename $1 .git`
+	dstpath=~/.vim/bundle/$repo
+	[[ -d $dstpath ]] && return
+	git clone $1 $dstpath
+	[[ $? -ne 0 ]] && echo "cudnot install $dstpath!" && rm -rf $dstpath && exit 2
 }
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle 2>/dev/null
@@ -57,8 +59,9 @@ if [ ! -f $PATHOGEN ]; then
     [[ ! -f $PATHOGEN ]] && echo "cudnot install pathogen" && exit 2
 fi
 
-vundle_install ~/.vim/bundle/nerdtree https://github.com/scrooloose/nerdtree.git
-vundle_install ~/.vim/bundle/vim-better-whitespace git://github.com/ntpeters/vim-better-whitespace.git
+bundle_install https://github.com/scrooloose/nerdtree.git
+bundle_install https://github.com/ntpeters/vim-better-whitespace.git
+bundle_install https://github.com/plasticboy/vim-markdown.git
 
 PLUGVIM=~/.vim/autoload/plug.vim
 if [ ! -f $PLUGVIM ]; then
