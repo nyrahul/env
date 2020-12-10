@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **Task Requirement**
-A clear and concise description of what the problem is.
+A clear and concise description of what the task is.
 
 **Solution/Design**
 A clear and concise description of what you want to happen.
