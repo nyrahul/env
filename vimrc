@@ -191,3 +191,6 @@ let g:lightline = {
             \ }
 
 colorscheme elflord
+nmap <F1> <nop>
+map <F1> <Esc>
+imap <F1> <Esc>
