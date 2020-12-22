@@ -1,0 +1,21 @@
+#!/bin/bash
+# Switch all the remotes from https to git
+# e.g, https://github.com/username/reponame.git -> git@github.com:username/reponame.git
+
+switch4remote()
+{
+	url=`git remote get-url $1`
+	[[ ! $url =~ ^https ]] && echo "Remote [$1] might be on git already" && return 0
+
+	path=`echo $url | sed -Ene 's#https://github.com/(.*)#\1#p'`
+	[[ "$path" == "" ]] && echo "couldnot identify the path! URL:$url" && return 1
+
+	cmd="git remote set-url $remote git@github.com:$path"
+	echo "$cmd"
+	$cmd
+}
+
+# for all remotes: origin, upstream, ...
+for remote in `git remote -v  | awk '{ print $1 }' | uniq`; do
+	switch4remote $remote
+done
