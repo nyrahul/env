@@ -10,7 +10,7 @@ switch4remote()
 	path=`echo $url | sed -Ene 's#https://github.com/(.*)#\1#p'`
 	[[ "$path" == "" ]] && echo "couldnot identify the path! URL:$url" && return 1
 
-	cmd="git remote set-url $remote git@github.com:$path"
+	cmd="git remote set-url $1 git@github.com:$path"
 	echo "$cmd"
 	$cmd
 }
