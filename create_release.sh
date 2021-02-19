@@ -5,7 +5,8 @@ if ! command -v gh &> /dev/null; then
 	exit 1
 fi
 
-if [ ! -z "$(git status --untracked-files=no --porcelain)" ]; then
+if ! git diff-index --quiet HEAD; then
+#if [ ! -z "$(git status --untracked-files=no --porcelain)" ]; then
 	git status --untracked-files=no --porcelain
 	echo "Above uncommitted changes in local repo"
 	exit 1
