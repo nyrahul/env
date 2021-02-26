@@ -1,5 +1,5 @@
 set rtp^=~/env/vimplugin
-
+set wildmenu
 set hlsearch incsearch
 set sw=4 ts=4 nu
 set si ai autoread
