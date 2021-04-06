@@ -73,6 +73,11 @@ if [ ! -f $PLUGVIM ]; then
     vim -c ":PlugInstall" -c ":qa"
 fi
 
+INDENTLINE=~/.vim/pack/vendor/start/indentLine
+if [ ! -d $INDENTLINE ]; then
+	git clone --depth=1 https://github.com/Yggdroot/indentLine.git $INDENTLINE
+fi
+
 ./ycm_install.sh
 
 if [ "$1" != "" ]; then
