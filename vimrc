@@ -99,6 +99,12 @@ execute "set <M-/>=\e/"
 nnoremap <M-/> /
 map <M-/> :RgSkipGlobs <C-R><C-W><CR>
 
+" KEY: Alt-, or Ctrl-Alt-, to search for the word under cursor in current file
+" with preview
+execute "set <M-,>=\e,"
+nnoremap <M-,> ,
+map <M-,> :BLines <C-R><C-W><CR>
+
 " Use fzf with ag to ignore files from .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " let $FZF_DEFAULT_COMMAND = '(git ls-tree -r --name-only HEAD || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null'
@@ -133,6 +139,12 @@ command! -bang -nargs=* RgSkipGlobs
   \ 1,
   \ fzf#vim#with_preview(),
   \ <bang>0)
+
+command! -bang -nargs=* BLines
+    \ call fzf#vim#grep(
+    \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
+    \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
+    " \   fzf#vim#with_preview({'options': '--layout reverse  --with-nth=-1.. --delimiter="/"'}, 'right:50%'))
 
 " command! -bang -nargs=* Rg
 "        \ call fzf#vim#grep(
@@ -194,3 +206,11 @@ colorscheme elflord
 nmap <F1> <nop>
 map <F1> <Esc>
 imap <F1> <Esc>
+
+" Open read-only files with different colorscheme
+function CheckRo()
+    if &readonly
+        colorscheme morning
+    endif
+endfunction
+au BufReadPost * call CheckRo()
