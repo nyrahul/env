@@ -8,11 +8,7 @@ cache:
 before_install:
   - sudo apt-get update -q -y
   - sudo apt-get install git gcc g++ make -y -f
-    #  - sudo apt-get install libc6-dev-i386 gcc-multilib make -y -f
-
-before_script:
-  - git submodule update --init
-  - git submodule foreach git pull origin master
+  - sudo apt-get install gcc-multilib -y -f
 
 script:
   - ls
