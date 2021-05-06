@@ -1,5 +1,7 @@
 # My Linux env setup
 
+[![Build Status](https://api.travis-ci.com/nyrahul/env.svg?branch=master)](https://travis-ci.com/github/nyrahul/env)
+
 1. Sets up my vim env (default vimrc and vim plugins)
 2. Installs required linux packages
 3. Sets up my bashrc
