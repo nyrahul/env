@@ -7,7 +7,7 @@ cache:
 
 before_install:
   - sudo apt -y update
-  - sudo apt -y install git gcc g++ make aptitude
+  - gcc --version
   - sudo apt -y install gcc-multilib
 
 script:
