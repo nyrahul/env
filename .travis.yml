@@ -8,7 +8,7 @@ cache:
 before_install:
   - sudo apt-get update -q -y
   - sudo apt-get install git gcc g++ make aptitude -y -f
-  - sudo aptitude install gcc-multilib -y -f -r
+  - sudo aptitude install gcc-multilib -y -f -r --safe-resolver
 
 script:
   - ls
