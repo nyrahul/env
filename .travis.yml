@@ -7,7 +7,7 @@ cache:
 
 before_install:
   - sudo apt-get -y update
-  - sudo apt-get -y install gcc-9-multilib
+  - sudo apt-get -y install gcc-multilib
 
 script:
   - ls
