@@ -27,4 +27,5 @@ else
     echo "login using zsh"
 fi
 
+[[ "$SHELL" != "/usr/bin/zsh" ]] && echo "Changing shell to zsh" && chsh -s /usr/bin/zsh && echo "Relogin for zsh to come into effect"
 
