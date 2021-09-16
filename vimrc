@@ -14,6 +14,7 @@ set hlsearch incsearch
 set sw=4 ts=4 nu
 set si ai autoread
 set smarttab
+set encoding=utf-8
 " set expandtab " go code does not like expandtab
 map <F12> :Dox<CR>
 set splitbelow  " vertical split, open new split below (def up)
