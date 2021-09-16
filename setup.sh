@@ -62,6 +62,7 @@ fi
 bundle_install https://github.com/scrooloose/nerdtree.git
 bundle_install https://github.com/ntpeters/vim-better-whitespace.git
 bundle_install https://github.com/plasticboy/vim-markdown.git
+bundle_install https://github.com/VundleVim/Vundle.vim.git
 
 PLUGVIM=~/.vim/autoload/plug.vim
 if [ ! -f $PLUGVIM ]; then
