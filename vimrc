@@ -1,3 +1,13 @@
+" use vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+call vundle#end()
+filetype plugin indent on
+
 set rtp^=~/env/vimplugin
 set wildmenu
 set hlsearch incsearch
@@ -95,13 +105,16 @@ map <F7> :Tags<CR>
 map <C-_> :Rg <C-R><C-W><CR>
 
 " KEY: Alt-/ or Ctrl-Alt-/ to riggrep without searching in _test.go files
+if has('nvim')
+else
 execute "set <M-/>=\e/"
+endif
 nnoremap <M-/> /
 map <M-/> :RgSkipGlobs <C-R><C-W><CR>
 
 " KEY: Alt-, or Ctrl-Alt-, to search for the word under cursor in current file
 " with preview
-execute "set <M-,>=\e,"
+" execute "set <M-,>=\e,"
 nnoremap <M-,> ,
 map <M-,> :BLines <C-R><C-W><CR>
 
@@ -113,7 +126,6 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'kyuhi/vim-emoji-complete'
 Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
@@ -124,8 +136,8 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " statusline color
-hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
-hi StatusLineNC guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
+" hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
+" hi StatusLineNC guibg=White ctermfg=8 guifg=DarkSlateGray ctermbg=15
 
 " Configure F6 to use ripgrep
 command! -bang -nargs=* Rg
@@ -210,7 +222,9 @@ imap <F1> <Esc>
 " Open read-only files with different colorscheme
 function CheckRo()
     if &readonly
-        colorscheme morning
+        colorscheme industry
+	else
+        colorscheme elflord
     endif
 endfunction
 au BufReadPost * call CheckRo()

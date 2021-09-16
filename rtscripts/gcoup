@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ -d $1 ]; then
+	cd $1
+	origin=`git remote get-url origin`
+	upstream=`git remote get-url upstream`
+	cd -
+else
+	origin="$1"
+	upstream="$2"
+fi
+
+git clone $origin
+[[ $? -ne 0 ]] && echo "[git clone $origin] failed" && exit 1
+t=`basename $origin`
+repo=${t/.git/}
+cd $repo
+[[ $? -ne 0 ]] && echo "failure cloning $origin" && exit 1
+[[ "$upstream" == "" ]] && exit 0
+git remote add upstream $upstream
+echo "next: cd $repo"
