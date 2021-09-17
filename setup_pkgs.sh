@@ -18,5 +18,5 @@ install mypaint
 install gnome-clocks
 
 # Needed for gromit-mpx
-install libindicator3-dev
-install gir1.2-appindicator3-0.1
+# install libindicator3-dev
+# install gir1.2-appindicator3-0.1
