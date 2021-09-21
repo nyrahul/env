@@ -127,9 +127,6 @@ ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(expand-or-complete)
 
 alias grep='grep --color=always'
 alias ls='ls --color=always'
-export GOPATH=$HOME/Softwares/gopath
-export GOROOT=$HOME/Softwares/go
-export PATH=${PATH}:$GOROOT/bin
 if [ -f /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 WORDCHARS='\/*?_-.[]~=&;!#$%^(){}<>'
 [ -f ~/env/bashrc ] && source ~/env/bashrc

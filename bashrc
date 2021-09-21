@@ -21,5 +21,7 @@ alias k=kubectl
 alias wkp="watch kubectl get pod -A"
 alias wks="watch kubectl get svc -A"
 alias wkps="watch kubectl get pod,svc -A"
+alias kgpa="kubectl get pod -A"
+alias kgps="kubectl get svc -A"
 complete -F __start_kubectl k
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/go/bin
