@@ -20,16 +20,11 @@ install_ripgrep()
 install curl
 install ctags exuberant-ctags
 install vim
-install cscope
-install doxygen
 install highlight
 install fonts-powerline
-install tmux
 install tree
-install cloc
 install_ripgrep
 install ifconfig net-tools
-install ctags exuberant-ctags
 install ag silversearcher-ag
 
 bundle_install()
@@ -60,8 +55,7 @@ if [ ! -f $PATHOGEN ]; then
 fi
 
 bundle_install https://github.com/scrooloose/nerdtree.git
-bundle_install https://github.com/ntpeters/vim-better-whitespace.git
-bundle_install https://github.com/plasticboy/vim-markdown.git
+#bundle_install https://github.com/ntpeters/vim-better-whitespace.git
 bundle_install https://github.com/VundleVim/Vundle.vim.git
 
 PLUGVIM=~/.vim/autoload/plug.vim
