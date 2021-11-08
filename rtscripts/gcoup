@@ -13,7 +13,7 @@ fi
 git clone $origin
 [[ $? -ne 0 ]] && echo "[git clone $origin] failed" && exit 1
 t=`basename $origin`
-repo=${t/.git/}
+repo=`echo $t | sed -e 's/.git$//'`
 cd $repo
 [[ $? -ne 0 ]] && echo "failure cloning $origin" && exit 1
 [[ "$upstream" == "" ]] && exit 0
