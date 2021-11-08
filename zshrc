@@ -80,7 +80,7 @@ plugins=(
     git
     bundler
     dotenv
-    osx
+    macos
     colorize
     command-not-found
     mosh
