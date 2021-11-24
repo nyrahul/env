@@ -24,10 +24,13 @@ parse_git_status() {
 	status=""
 	modcnt=`git status -s | grep " *M "  | wc -l`
 	newcnt=`git status -s | grep " *?? " | wc -l`
+	delcnt=`git status -s | grep " *D "  | wc -l`
 	[[ $modcnt -eq 0 ]] && [[ $newcnt -eq 0 ]] && [[ "$ahead" == "" ]] && return
-	[[ $modcnt -ne 0 ]] && status="!${modcnt}"
+	[[ $modcnt -ne 0 ]] && status="`echo -e "\U0001f4dd"`${modcnt}"
 	[[ $newcnt -ne 0 ]] && status="$status ?$newcnt"
-	[[ $ahead != "" ]] && status="$status ^$ahead"
+	[[ $delcnt -ne 0 ]] && status="$status `echo -e '\U0001f6ab'`$delcnt"
+	#[[ $delcnt -ne 0 ]] && status="$status `echo -e '\U0001FA93'`$delcnt"
+	[[ $ahead != "" ]] && status="$status `echo -e '\U0001f4e4'`$ahead"
 	status=`echo $status | xargs` # trim whitespaces
 	echo -en "($status)"
 }
