@@ -21,12 +21,14 @@ parse_git_status() {
 	ahead=`git status | grep "Your branch is ahead" | awk '{ print $8 }'`
 	# Your branch is ahead of 'origin/master' by 2 commits.
 
+	status=""
 	modcnt=`git status -s | grep " *M "  | wc -l`
 	newcnt=`git status -s | grep " *?? " | wc -l`
 	[[ $modcnt -eq 0 ]] && [[ $newcnt -eq 0 ]] && [[ "$ahead" == "" ]] && return
 	[[ $modcnt -ne 0 ]] && status="!${modcnt}"
-	[[ $newcnt -ne 0 ]] && status="$status?$newcnt"
-	[[ $ahead != "" ]] && status="$status^$ahead"
+	[[ $newcnt -ne 0 ]] && status="$status ?$newcnt"
+	[[ $ahead != "" ]] && status="$status ^$ahead"
+	status=`echo $status | xargs` # trim whitespaces
 	echo -en "($status)"
 }
 
