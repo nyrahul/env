@@ -20,6 +20,7 @@ parse_git_status() {
 
 	modcnt=`git status -s | grep " *M "  | wc -l`
 	newcnt=`git status -s | grep " *?? " | wc -l`
+	[[ $modcnt -eq 0 ]] && [[ $newcnt -eq 0 ]] && return
 	[[ $modcnt -ne 0 ]] && status="${modcnt}*"
 	#[[ $modcnt -gt 0 ]] && [[ $newcnt -gt 0 ]] && status="$status "
 	[[ $newcnt -ne 0 ]] && status="$status$newcnt+"
