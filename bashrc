@@ -1,12 +1,36 @@
+GREEN="\[\033[32m\]"
+ORANGE="\[\033[33m\]"
+CYAN="\[\033[36m\]"
+NC="\[\033[00m\]"
+
+#parse_git_branch() {
+#    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+#}
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	git branch 2>/dev/null >/dev/null
+	[[ $? -ne 0 ]] && return
+    branch=`git branch --show-current`
+	echo " [$branch]"
 }
+
+parse_git_status() {
+	git branch 2>/dev/null >/dev/null
+	[[ $? -ne 0 ]] && return
+
+	modcnt=`git status -s | grep " *M "  | wc -l`
+	newcnt=`git status -s | grep " *?? " | wc -l`
+	[[ $modcnt -ne 0 ]] && status="${modcnt}*"
+	#[[ $modcnt -gt 0 ]] && [[ $newcnt -gt 0 ]] && status="$status "
+	[[ $newcnt -ne 0 ]] && status="$status$newcnt+"
+	echo -en "($status)"
+}
+
 netns_name() {
     str=`ip netns identify $$`
     [[ "$str" != "" ]] && echo "\033[1;35m[$str]\033[0m " && return
 }
-export PS1="$(netns_name)\u@\h:\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\$ "
+export PS1="$(netns_name)\u@\h:$GREEN\w$CYAN\$(parse_git_branch)$ORANGE\$(parse_git_status)$NC\$ "
 
 export LC_ALL="en_US.UTF-8"
 
