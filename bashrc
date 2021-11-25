@@ -1,11 +1,8 @@
-GREEN="\[\033[32m\]"
+GREEN="\[\033[0;32m\]"	# 0=Normal, 1=Bold, 2=Faint, 3=Italics, 4=Underline
 ORANGE="\[\033[33m\]"
+BLUE="\[\033[34m\]"
 CYAN="\[\033[36m\]"
 NC="\[\033[00m\]"
-
-#parse_git_branch() {
-#    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-#}
 
 parse_git_branch() {
 	git branch 2>/dev/null >/dev/null
@@ -39,7 +36,7 @@ netns_name() {
     str=`ip netns identify $$`
     [[ "$str" != "" ]] && echo "\033[1;35m[$str]\033[0m " && return
 }
-export PS1="$(netns_name)\u@\h:$GREEN\w$CYAN\$(parse_git_branch)$ORANGE\$(parse_git_status)$NC\$ "
+export PS1="$(netns_name)\u@\h:$GREEN\w$CYAN\$(parse_git_branch)$NC$ORANGE\$(parse_git_status)$NC\$ "
 
 export LC_ALL="en_US.UTF-8"
 
