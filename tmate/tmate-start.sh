@@ -26,7 +26,7 @@ start_tmate()
 	done
 	echo "Sending mail to $username..."
 	data=`cat $logf`
-	printf "Subject: tmate details\n\n$data" | ssmtp $username
+	printf "Subject: tmate details `date`\n\n$data" | ssmtp $username -F"Tmate"
 	wait
 }
 
