@@ -35,10 +35,10 @@ parse_git_status() {
 k8scluster_name()
 {
     str=`kubectl config current-context 2>/dev/null`
-    [[ "$str" != "" ]] && echo "\033[0;33m[$str]\033[0m " && return
+    [[ "$str" != "" ]] && echo "$CYAN[$str]$NC " && return
 }
 
-export PS1="$(k8scluster_name)\u@\h:$GREEN\w$CYAN\$(parse_git_branch)$NC$ORANGE\$(parse_git_status)$NC\$ "
+export PS1="$(k8scluster_name)\u@\h:$GREEN\w$CYAN$(parse_git_branch)$NC$ORANGE$(parse_git_status)$NC\$ "
 
 export LC_ALL="en_US.UTF-8"
 
