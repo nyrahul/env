@@ -58,3 +58,8 @@ alias kgps="kubectl get svc -A"
 alias watch="watch "
 complete -F __start_kubectl k
 export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/go/bin
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
