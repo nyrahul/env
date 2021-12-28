@@ -38,16 +38,14 @@ k8scluster_name()
     [[ "$str" != "" ]] && echo "$CYAN[$str]$NC " && return
 }
 
-export PS1="$(k8scluster_name)\u@\h:$GREEN\w$CYAN$(parse_git_branch)$NC$ORANGE$(parse_git_status)$NC\$ "
+# for bash, customize the prompt for git/k8s details. These are already available for zsh/p10k.
+[[ "$(ps -q $$ -o comm=)" == "bash" ]] && export PS1="$(k8scluster_name)\u@\h:$GREEN\w$CYAN$(parse_git_branch)$NC$ORANGE$(parse_git_status)$NC\$ "
 
 export LC_ALL="en_US.UTF-8"
 
-# WARNING: This may not be the suitable bet for everyone!
-#[[ $TERM != "screen" ]] && exec tmux
-
 # Mutt needs this
 export EDITOR=vim
-export PATH=/usr/lib/ccache:$PATH:~/env/rtscripts
+export PATH=$PATH:~/env/rtscripts
 alias xdg-open="xdg-open 2>&1 >/dev/null"
 alias k=kubectl
 alias wkp="watch kubectl get pod -A"
@@ -57,9 +55,9 @@ alias kgpa="kubectl get pod -A"
 alias kgps="kubectl get svc -A"
 alias watch="watch "
 complete -F __start_kubectl k
-export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+#fi
 
