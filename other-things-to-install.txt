@@ -17,6 +17,19 @@ INSTALL4J_ADD_VM_PARAMS=-Dsun.java2d.uiScale=2.0
 * zoom
 * slack
 * virtualbox
+* Insync
+* Beyond Compare
+* paprefs for simultaneous speaker output
+* golang
+* brave
+* tmate
+* vagrant
+
+Cloud tools
+* kubectl
+* kubectx
+* aws cli
+* gcloud cli
 
 # Helps to reduce gnome-shell CPU utilization
 gsettings set org.gnome.desktop.interface clock-show-seconds false
