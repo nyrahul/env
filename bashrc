@@ -35,6 +35,7 @@ parse_git_status() {
 k8scluster_name()
 {
     str=`kubectl config current-context 2>/dev/null`
+	[[ $? -ne 0 ]] && return
     [[ "$str" != "" ]] && echo "$CYAN[$str]$NC " && return
 }
 
@@ -47,17 +48,20 @@ export LC_ALL="en_US.UTF-8"
 export EDITOR=vim
 export PATH=$PATH:~/env/rtscripts
 alias xdg-open="xdg-open 2>&1 >/dev/null"
-alias k=kubectl
-alias wkp="watch kubectl get pod -A"
-alias wks="watch kubectl get svc -A"
-alias wkps="watch kubectl get pod,svc -A"
-alias kgpa="kubectl get pod -A"
-alias kgps="kubectl get svc -A"
+
+kubectl_play()
+{
+	[[ "$(which kubectl)" == "" ]] && return
+	alias k=kubectl
+	alias wkp="watch kubectl get pod -A"
+	alias wks="watch kubectl get svc -A"
+	alias wkps="watch kubectl get pod,svc -A"
+	alias kgpa="kubectl get pod -A"
+	alias kgps="kubectl get svc -A"
+	source <(kubectl completion bash)
+	complete -F __start_kubectl k
+}
+
+kubectl_play
 alias watch="watch "
-complete -F __start_kubectl k
-export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin
-
-#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#  exec tmux
-#fi
-
+export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/go/bin

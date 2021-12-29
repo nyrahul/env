@@ -25,6 +25,7 @@ INSTALL4J_ADD_VM_PARAMS=-Dsun.java2d.uiScale=2.0
 * tmate
 * vagrant
 * droidcam
+* openssh-server
 
 Cloud tools
 * kubectl
