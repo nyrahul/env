@@ -9,7 +9,10 @@ install()
     apt -y install ${2-$1}
 }
 
+install ifconfig net-tools
 install terminator
+install tree
+install highlight
 install gnome-tweaks gnome-tweak-tool
 install gimp
 install vlc

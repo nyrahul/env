@@ -58,7 +58,8 @@ kubectl_play()
 	alias wkps="watch kubectl get pod,svc -A"
 	alias kgpa="kubectl get pod -A"
 	alias kgps="kubectl get svc -A"
-	source <(kubectl completion bash)
+	[[ "$(ps -q $$ -o comm=)" == "bash" ]] && source <(kubectl completion bash)
+	[[ "$(ps -q $$ -o comm=)" == "zsh" ]] && source <(kubectl completion zsh)
 	complete -F __start_kubectl k
 }
 

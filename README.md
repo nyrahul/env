@@ -8,6 +8,10 @@
 4. Sets up my gitconfig
 5. Script to set default TCP Congestion control algorithm to BBR (not enabled by default)
 
+```
+curl -s https://raw.githubusercontent.com/nyrahul/env/master/setup.sh | bash -s
+```
+
 ## Vimrc
 Add following line to default vimrc:
 

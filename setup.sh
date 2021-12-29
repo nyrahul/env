@@ -17,14 +17,14 @@ install_ripgrep()
     rm $f
 }
 
+install git
+[[ ! -d "~/env" ]] && git clone https://github.com/nyrahul/env.git && cd ~/env
+
 install curl
 install ctags exuberant-ctags
 install vim
-install highlight
 install fonts-powerline
-install tree
 install_ripgrep
-install ifconfig net-tools
 install ag silversearcher-ag
 
 bundle_install()
