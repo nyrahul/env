@@ -39,13 +39,13 @@ statusline()
 
 install_tmate()
 {
-	sudo apt install tmate
+	sudo apt -y install tmate
 	statusline $? "tmate installed"
 }
 
 install_ssmtp()
 {
-	sudo apt install ssmtp
+	sudo apt -y install ssmtp
 	statusline $? "ssmtp installed"
 }
 
@@ -135,6 +135,8 @@ main()
 	install_ssmtp
 	setup_ssmtp
 	install_systemd
+	sudo systemctl enable tmate.service
+	sudo systemctl start tmate.service
 }
 
 main

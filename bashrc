@@ -7,7 +7,7 @@ NC="\[\033[00m\]"
 parse_git_branch() {
 	git branch 2>/dev/null >/dev/null
 	[[ $? -ne 0 ]] && return
-    branch=`git branch --show-current`
+    branch=`git rev-parse --abbrev-ref HEAD`
 	echo " [$branch]"
 }
 
