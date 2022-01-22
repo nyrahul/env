@@ -67,6 +67,7 @@ if [ ! -f $PLUGVIM ]; then
     # Install fzf and fzf.vim using vim.plug
     vim -c ":PlugInstall" -c ":qa"
 fi
+vim -c ":PluginInstall" -c ":qa"
 
 INDENTLINE=~/.vim/pack/vendor/start/indentLine
 if [ ! -d $INDENTLINE ]; then
