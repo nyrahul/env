@@ -34,13 +34,11 @@ parse_git_status() {
 
 k8scluster_name()
 {
-    str=`kubectl config current-context 2>/dev/null`
-	[[ $? -ne 0 ]] && return
-    [[ "$str" != "" ]] && echo "$CYAN[$str]$NC " && return
+    kubectl config current-context 2>/dev/null
 }
 
 # for bash, customize the prompt for git/k8s details. These are already available for zsh/p10k.
-[[ "$(ps -q $$ -o comm=)" == "bash" ]] && export PS1="$(k8scluster_name)\u@\h:$GREEN\w$CYAN$(parse_git_branch)$NC$ORANGE$(parse_git_status)$NC\$ "
+[[ "$(ps -q $$ -o comm=)" == "bash" ]] && export PS1="$CYAN\$(k8scluster_name)$NC\u@\h:$GREEN\w$CYAN$(parse_git_branch)$NC$ORANGE$(parse_git_status)$NC\$ "
 
 export LC_ALL="en_US.UTF-8"
 
