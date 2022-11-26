@@ -12,6 +12,11 @@
 curl -s https://raw.githubusercontent.com/nyrahul/env/master/setup.sh | bash -s
 ```
 
+## Install tmux with conf
+```
+curl -s https://raw.githubusercontent.com/nyrahul/env/master/tmux.sh | bash -s
+```
+
 ## Vimrc
 Add following line to default vimrc:
 
