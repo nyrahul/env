@@ -11,4 +11,4 @@ install git
 install tmux
 git clone https://github.com/gpakosz/.tmux.git $HOME/.tmux
 ln -s -f $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
-curl https://raw.githubusercontent.com/nyrahul/env/master/tmux.conf.local -o $HOME/
+curl https://raw.githubusercontent.com/nyrahul/env/master/tmux.conf.local -o $HOME/.tmux.conf.local
