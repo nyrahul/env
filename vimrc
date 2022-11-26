@@ -25,11 +25,11 @@ set directory=~/env/swap
 " ----------- For vimdiff------------------
 " Ctrl-Up: Send the diff to other window
 " Ctrl-Down: Get the diff from other window
-map <ESC>[A :diffput<CR>
-map <ESC>[B :diffget<CR>
+" map <ESC>[A :diffput<CR>
+" map <ESC>[B :diffget<CR>
 " mapping for laptop keyboard
-map <ESC>[1;5A :diffput<CR>
-map <ESC>[1;5B :diffget<CR>
+" map <ESC>[1;5A :diffput<CR>
+" map <ESC>[1;5B :diffget<CR>
 
 " Set colorscheme for vimdiff. The default one is an eye-sore.
 highlight Normal term=none cterm=none ctermfg=White ctermbg=Black gui=none guifg=White guibg=Black
@@ -215,7 +215,6 @@ let g:lightline = {
             \ },
             \ }
 
-colorscheme elflord
 nmap <F1> <nop>
 map <F1> <Esc>
 imap <F1> <Esc>
@@ -223,9 +222,27 @@ imap <F1> <Esc>
 " Open read-only files with different colorscheme
 function CheckRo()
     if &readonly
-        colorscheme industry
+        colorscheme desert
 	else
         colorscheme elflord
     endif
 endfunction
 au BufReadPost * call CheckRo()
+colorscheme elflord
+
+if &diff
+	set cursorline
+	map ] ]c
+	map [ [c
+	hi DiffAdd    ctermfg=233 ctermbg=LightGreen guifg=#003300 guibg=#DDFFDD gui=none cterm=none
+	hi DiffChange ctermbg=white  guibg=#ececec gui=none   cterm=none
+	hi DiffText   ctermfg=233  ctermbg=yellow  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
+endif
+
+" use ctrl <left/right> in vim with tmux
+:map <esc>[1;5D <C-Left>
+:map <esc>[1;5C <C-Right>
+
+" Disable quote concealing in JSON files
+let g:vim_json_conceal=0
+let g:vim_json_syntax_conceal=0

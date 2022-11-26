@@ -64,3 +64,5 @@ kubectl_play()
 kubectl_play
 alias watch="watch "
 export PATH=$PATH:/usr/local/go/bin:$HOME/.local/bin:$HOME/go/bin
+alias m="make"
+export PATH="$PATH:/home/rahul/istio-1.15.0/bin"
