@@ -6,6 +6,8 @@ call vundle#begin()
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'fatih/vim-go'
+Plugin 'preservim/nerdtree'
 call vundle#end()
 filetype plugin indent on
 
@@ -246,3 +248,10 @@ endif
 " Disable quote concealing in JSON files
 let g:vim_json_conceal=0
 let g:vim_json_syntax_conceal=0
+
+" NERDTree shortcuts
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
