@@ -22,6 +22,11 @@ install_nvim()
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod +x nvim.appimage
 	sudo mv nvim.appimage /usr/local/bin/nvim
+
+	if [ ! -f $HOME/.config/nvim/init.vim ]; then
+		mkdir -p $HOME/.config/nvim
+		cp init.vim $HOME/.config/nvim/
+	fi
 }
 
 install git
