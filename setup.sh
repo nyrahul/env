@@ -17,12 +17,20 @@ install_ripgrep()
     rm $f
 }
 
+install_nvim()
+{
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	chmod +x nvim.appimage
+	sudo mv nvim.appimage /usr/local/bin/nvim
+}
+
 install git
 [[ ! -d "~/env" ]] && git clone https://github.com/nyrahul/env.git && cd ~/env
 
 install curl
 install ctags exuberant-ctags
 install vim
+install_nvim
 install fonts-powerline
 install_ripgrep
 install ag silversearcher-ag

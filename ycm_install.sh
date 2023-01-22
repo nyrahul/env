@@ -13,3 +13,4 @@ if [ ! -d $YCMPATH ]; then
     cd -
 fi
 
+python3 -m pip install --user --upgrade pynvim
