@@ -226,11 +226,11 @@ function CheckRo()
     if &readonly
         colorscheme desert
 	else
-        colorscheme elflord
+        colorscheme default
     endif
 endfunction
 au BufReadPost * call CheckRo()
-colorscheme elflord
+colorscheme default
 
 if &diff
 	set cursorline
