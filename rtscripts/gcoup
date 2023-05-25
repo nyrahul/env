@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ "$1" == "" ]] && echo "Usage: $0 <origin> <upstream>" && exit 1
+
 if [ -d $1 ]; then
 	cd $1
 	origin=`git remote get-url origin`
