@@ -4,7 +4,12 @@ install()
 {
     hash $1 2>/dev/null
     [[ $? -eq 0 ]] && echo "${2-$1} already installed" && return
-    sudo apt -y install ${2-$1}
+    hash apt 2>/dev/null
+	if [ $? -eq 0 ]; then
+		sudo apt -y install ${2-$1}
+	else
+	    sudo dnf install ${2-$1}
+	fi
 }
 
 install_ripgrep()
@@ -23,6 +28,7 @@ install_nvim()
 		echo "Neovim is already installed"
 		return
 	fi
+	install fuse2fs fuse
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod +x nvim.appimage
 	sudo mv nvim.appimage /usr/local/bin/nvim
