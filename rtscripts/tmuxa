@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[[ "$1" == "" ]] && echo "require tmux session name" && exit 1
+tmux attach -t $1 || tmux new -s $1
