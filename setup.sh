@@ -12,6 +12,15 @@ install()
 	fi
 }
 
+install_kubectl()
+{
+    kubectl rg 2>/dev/null
+    [[ $? -eq 0 ]] && echo "kubectl already installed" && return
+	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+	chmod +x kubectl &&	sudo kubectl /usr/local/bin/
+    rm kubectl
+}
+
 install_ripgrep()
 {
     hash rg 2>/dev/null
@@ -48,6 +57,7 @@ install vim
 install_nvim
 install fonts-powerline
 install_ripgrep
+install_kubectl
 install ag silversearcher-ag
 
 bundle_install()
