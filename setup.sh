@@ -12,6 +12,16 @@ install()
 	fi
 }
 
+install_kubectx()
+{
+    hash kubectx 2>/dev/null
+    [[ $? -eq 0 ]] && echo "kubectx already installed" && return
+	git clone https://github.com/ahmetb/kubectx /tmp/kubectx
+	sudo ln -s /tmp/kubectx/kubectx /usr/local/bin/kubectx
+	sudo ln -s /tmp/kubectx/kubenx /usr/local/bin/kubens
+	rm -rf /tmp/kubectx
+}
+
 install_kubectl()
 {
     hash kubectl 2>/dev/null
@@ -50,7 +60,7 @@ install_nvim()
 
 sudo apt update
 install git
-[[ ! -d "~/env" ]] && git clone https://github.com/nyrahul/env.git && cd ~/env
+[[ ! -d "$HOME/env" ]] && git clone https://github.com/nyrahul/env.git && cd $HOME/env
 
 install curl
 install ctags exuberant-ctags
@@ -59,6 +69,7 @@ install_nvim
 install fonts-powerline
 install_ripgrep
 install_kubectl
+install_kubectx
 install ag silversearcher-ag
 
 bundle_install()
