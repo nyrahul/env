@@ -14,10 +14,10 @@ install()
 
 install_kubectl()
 {
-    kubectl rg 2>/dev/null
+    hash kubectl 2>/dev/null
     [[ $? -eq 0 ]] && echo "kubectl already installed" && return
 	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-	chmod +x kubectl &&	sudo kubectl /usr/local/bin/
+	chmod +x kubectl &&	sudo mv kubectl /usr/local/bin/
     rm kubectl
 }
 
@@ -48,6 +48,7 @@ install_nvim()
 	fi
 }
 
+sudo apt update
 install git
 [[ ! -d "~/env" ]] && git clone https://github.com/nyrahul/env.git && cd ~/env
 
