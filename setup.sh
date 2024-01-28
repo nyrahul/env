@@ -17,8 +17,8 @@ install_kubectx()
     hash kubectx 2>/dev/null
     [[ $? -eq 0 ]] && echo "kubectx already installed" && return
 	git clone https://github.com/ahmetb/kubectx /tmp/kubectx
-	sudo ln -s /tmp/kubectx/kubectx /usr/local/bin/kubectx
-	sudo ln -s /tmp/kubectx/kubenx /usr/local/bin/kubens
+	sudo cp /tmp/kubectx/kubectx /usr/local/bin/kubectx
+	sudo cp /tmp/kubectx/kubenx /usr/local/bin/kubens
 	rm -rf /tmp/kubectx
 }
 
@@ -71,6 +71,7 @@ install_ripgrep
 install_kubectl
 install_kubectx
 install ag silversearcher-ag
+sudo apt -y install python3-pip
 
 bundle_install()
 {
