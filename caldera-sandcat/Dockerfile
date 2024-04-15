@@ -7,4 +7,4 @@ COPY scripts /home/caldera
 
 WORKDIR /home/caldera
 
-ENTRYPOINT ["/home/k8tls/tlsscan"]
+ENTRYPOINT ["/home/caldera/run-agent.sh"]

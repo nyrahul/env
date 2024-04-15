@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: caldera
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: caldera-serviceact
+  namespace: caldera
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: caldera-cr
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: caldera-crb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: caldera-cr
+subjects:
+- kind: ServiceAccount
+  name: caldera-serviceact
+  namespace: caldera
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: caldera-agent
+  namespace: caldera
+  labels:
+    app: caldera
+spec:
+  serviceAccountName: caldera-serviceact
+  containers:
+  - name: caldera
+    image: nyrahul/caldera-agent:latest
+---
